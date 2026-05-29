@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>لأجمل بنوته 🤭♥</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Amiri', serif;
+}
+
+body{
+background:linear-gradient(180deg,#120012,#1b001b,#000);
+color:white;
+text-align:center;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+.bg{
+position:fixed;
+inset:0;
+background:radial-gradient(circle,#ff4f9555,#000);
+filter:blur(25px);
+z-index:-1;
+}
+
+/* باسورد */
+#passwordScreen{
+position:fixed;
+inset:0;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.pass-box{
+background:#111;
+padding:30px;
+border-radius:20px;
+}
+
+input{
+padding:12px;
+border-radius:10px;
+border:none;
+margin-top:10px;
+}
+
+button{
+background:#ff4f95;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:10px;
+margin-top:15px;
+cursor:pointer;
+}
+
+/* المحتوى */
+.container{
+display:none;
+padding:20px;
+}
+
+.box{
+background:rgba(0,0,0,0.4);
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+}
+
+.main-title{
+font-size:35px;
+color:#ff4f95;
+}
+
+.typewriter{
+margin-top:20px;
+line-height:2;
+font-size:20px;
+}
+
+/* الصور */
+.gallery img{
+width:100%;
+border-radius:15px;
+margin-top:10px;
+}
+
+.caption{
+font-size:16px;
+margin-top:5px;
+opacity:.9;
+}
+
+/* عداد */
+.counter{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:20px;
+gap:10px;
+}
+
+.time{
+background:#1b1b1b;
+padding:15px;
+border-radius:20px;
+border:1px solid #ff4f95;
+}
+
+/* رسائل */
+.secret{
+display:none;
+margin-top:20px;
+}
+
+/* قلوب */
+.heart{
+position:absolute;
+bottom:-50px;
+color:#ff4f95;
+animation:up 6s linear infinite;
+}
+
+@keyframes up{
+0%{transform:translateY(0);opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-120vh);opacity:0;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- باسورد -->
+<div id="passwordScreen">
+<div class="pass-box">
+<h2>ادخلي الباسورد 🤭♥</h2>
+<input type="password" id="password">
+<br>
+<button onclick="checkPassword()">فتح ♥</button>
+</div>
+</div>
+
+<!-- المحتوى -->
+<div class="container" id="mainContent">
+
+<!-- 🎧 الصوت -->
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<h1 class="main-title">لأجمل بنوته في الدنيا ♥</h1>
+
+<div class="box">
+<div id="typewriter" class="typewriter"></div>
+</div>
+
+<!-- صور -->
+<div class="box gallery">
+
+<img src="photo1.jpg">
+<div class="caption">انتي جميلة اوي بجد وملكيش زي ❤️</div>
+
+<img src="photo2.jpg">
+<div class="caption">والله انتي أحلى من أي حد شوفته في حياتي ❤️</div>
+
+<img src="photo3.jpg">
+<div class="caption">جمالك ده كفاية يخليني أحبك كل يوم أكتر ❤️</div>
+
+<img src="photo4.jpg">
+<div class="caption">كل مرة بشوفك بحس إني كسبت الدنيا ❤️</div>
+
+<img src="photo5.jpg">
+<div class="caption">انتي القمر بجد مش هزار ❤️</div>
+
+<img src="photo6.jpg">
+<div class="caption">ضحكتك دي كفاية تخليني مبسوط طول اليوم ❤️</div>
+
+</div>
+
+<!-- عداد -->
+<div class="box">
+<div class="counter" id="counter"></div>
+</div>
+
+<button onclick="showSecret()">اضغطي هنا ❤️</button>
+
+<div class="box secret" id="secretMessage">
+انا مش هسيبك ابدآ ❤️<br>
+وهفضل طول عمري معاكي ❤️<br>
+وحتى لو الدنيا كلها بعدت عنك انا جنبك ❤️<br>
+وكل يوم بحبك اكتر من اللي قبله ❤️
+</div>
+
+<div onclick="showHidden()">سر ❤️</div>
+
+<div class="box secret" id="hiddenText">
+بحبك للأبد ومفيش حاجة هتغير ده ❤️
+</div>
+
+</div>
+
+<script>
+
+/* باسورد */
+function checkPassword(){
+let pass=document.getElementById("password").value;
+
+if(pass==="love"){
+document.getElementById("passwordScreen").style.display="none";
+document.getElementById("mainContent").style.display="block";
+
+/* تشغيل الصوت */
+document.getElementById("bgMusic").play().catch(()=>{});
+
+startTyping();
+}else{
+alert("غلط 😑");
+}
+}
+
+/* كتابة */
+const text=`بحبك اوي ومبسوط انك في حياتي ❤️
+نفسي نفضل سوا طول العمر ❤️
+ضحكتك بتخليني اسعد واحد في الدنيا ❤️
+ووجودك جنبي هو كل حاجه ليا ❤️`;
+
+let i=0;
+
+function startTyping(){
+function typing(){
+if(i<text.length){
+document.getElementById("typewriter").innerHTML+=text[i];
+i++;
+setTimeout(typing,40);
+}}
+typing();
+}
+
+/* زر */
+function showSecret(){
+document.getElementById("secretMessage").style.display="block";
+}
+
+/* سر */
+function showHidden(){
+document.getElementById("hiddenText").style.display="block";
+}
+
+/* عداد */
+const startDate=new Date("2025-04-29");
+
+setInterval(()=>{
+let now=new Date();
+let diff=now-startDate;
+
+let days=Math.floor(diff/(1000*60*60*24));
+let hours=Math.floor((diff/(1000*60*60))%24);
+
+document.getElementById("counter").innerHTML=
+`
+<div class="time">❤️ ${days} يوم</div>
+<div class="time">❤️ ${hours} ساعة</div>
+`;
+},1000);
+
+/* قلوب */
+for(let i=0;i<40;i++){
+let h=document.createElement('div');
+h.className='heart';
+h.innerHTML='♥';
+h.style.left=Math.random()*100+'%';
+document.body.appendChild(h);
+}
+
+/* حل الموبايل */
+document.addEventListener("click",()=>{
+document.getElementById("bgMusic").play().catch(()=>{});
+},{once:true});
+
+</script>
+
+</body>
+  </html>
